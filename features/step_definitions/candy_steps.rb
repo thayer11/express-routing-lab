@@ -67,6 +67,10 @@ When(/^I put to update the candies$/) do
 	end 
 end
 
+When(/^I delete to destroy the candies$/) do
+  connection.delete "candies/#{@candy}"
+end
+
 Then(/^a candy is created$/) do
 	json_response = JSON.parse(@response.body)
 	expect(json_response['id']).to_not be_nil
@@ -88,8 +92,13 @@ Then(/^I see all the candy details$/) do
 end
 
 Then(/^I the candy is updated$/) do
-  		json_response = JSON.parse(@response.body)
+  	json_response = JSON.parse(@response.body)
 	expect(json_response['id']).to be @candy
 	expect(json_response['name']).to eq 'M&M'
 	expect(json_response['color']).to eq 'blue'
+end
+
+Then(/^I the candy is deleted$/) do
+  response = connection.get "candies/#{@candy}"  
+  expect(response.body).to be_empty
 end
