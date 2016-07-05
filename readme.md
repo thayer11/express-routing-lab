@@ -4,30 +4,47 @@
 
 We've now seen how to write an app with Node and Express from scratch, so let's apply this concept again by creating another RESTful API using Express.
 
-A kid has come to you with an idea for an API to keep track of his candies.  You love candies!  So, you accept his proposal. You will create a resource `Candy` and use the kid's candy "data" to populate and post to your database. Check the additional resources at the bottom of this document to get some JSON data to add to your app as well, as well as some cURL examples to make sure your app works as expected!
+A kid has come to you with an idea for an API to keep track of his candies.  You love candies!  So, you accept his proposal. You 
+will create a resource `Candy` and use the kid's candy "data" to populate and post to your database. Check the additional resources 
+at the bottom of this document to get some JSON data to add to your app as well, as well as some cURL examples to make sure your 
+app works as expected!
 
 ## Exercise
 
-#### Requirements
+### Requirements
 
 - Create an Express app from scratch
-- This app will only respond to JSON; it is just an API, so don't worry about the views
-- The resource `Candy` should be accessible via the endpoint `/candies` and be RESTful
-- Implement `index`,`show`, `create`, `update`, and `destory` functionality
+- This app will only respond to JSON; it is just an API
+- The resource `Candy`, (id, color, name) should be accessible via the endpoint `/candies` 
+- Implement `index`,`show`, `create`, `update`, and `destroy` functionality
+- Follow the restful HTTP method and endpoint naming conventions
 
 **Bonus:**
 - Handle wrong responses with appropriate HTTP status and responses (404, 500, 422)
 - Add some validations for `edit` and `update`
 
+### Automated Testing
 
-#### Deliverable
+One path you can follow to create the app is to use automated tests that are included in repo.
 
-An example app can be found in `solution-code`.
+To run the full test suite use ``make``. This will download all of the files needed to run the tests and run all of the tests. 
+All of the tests should be red since 
+
+The tests are broken up into 4 tests:
+- Step One
+- Step Two 
+- Step Three
+- Step Four
+
+To run a specific file you can use ``make step1``, ``make step2``, etc. This can help you to focus on fixing one issue at a time.
+
+These automated tests let you practice the red-green-refactor cycle to create your application
+
+### Manual Testing 
+
+To work through manual testing you can use cURL. Here are some 
 
 Once you spin up your local server, look below at the cURL commands with the expected responses we want you to test on this app once you've finished building;  the HTTP status should always be 2XX.
-
-
-
 
 `Index` cURL Request
 
