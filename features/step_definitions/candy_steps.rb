@@ -59,6 +59,14 @@ When(/^I get to index the candies$/) do
  	@response = connection.get 'candies'
 end
 
+When(/^I put to update the candies$/) do
+  	@response = connection.put do |request| 
+		request.url "candies/#{@candy}/edit"
+		request.headers['Content-Type'] = 'application/json'
+		request.body = { id: @candy, name: "M&M", color: "blue" }.to_json
+	end 
+end
+
 Then(/^a candy is created$/) do
 	json_response = JSON.parse(@response.body)
 	expect(json_response['id']).to_not be_nil
@@ -77,4 +85,11 @@ Then(/^I see all the candy details$/) do
 	json_response = JSON.parse(@response.body)
 	expect(json_response.class).to eq Array
 	expect(json_response.size).to be >= 2 
+end
+
+Then(/^I the candy is updated$/) do
+  		json_response = JSON.parse(@response.body)
+	expect(json_response['id']).to be @candy
+	expect(json_response['name']).to eq 'M&M'
+	expect(json_response['color']).to eq 'blue'
 end
